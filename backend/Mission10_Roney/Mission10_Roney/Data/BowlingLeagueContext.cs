@@ -15,6 +15,7 @@ public partial class BowlingLeagueContext : DbContext
     {
     }
 
+    //test comment
     public virtual DbSet<Bowler> Bowlers { get; set; }
 
     public virtual DbSet<BowlerScore> BowlerScores { get; set; }
