@@ -12,11 +12,20 @@ public class BowlerController : ControllerBase
     {
         _bowlingContext = temp;
     }
-// Get bowler information with associated team data
-    [HttpGet(Name = "GetBowlerInfo")]
-    public IEnumerable<Bowler> Get()
+
+    // Get bowler information with associated team data
+    [HttpGet("bowler", Name = "GetBowlerInfo")]
+    public IEnumerable<Bowler> GetBowlerInfo()
     {
-        var bowlerList = _bowlingContext.Bowlers.ToList();
+        var bowlerList = _bowlingContext.Bowlers.Where(b => b.TeamId == 1 || b.TeamId ==2).ToList();
         return bowlerList;
+    }
+    
+    // Get team information
+    [HttpGet("team", Name = "GetTeamInfo")]
+    public IEnumerable<Team> GetTeamInfo()
+    {
+        var teamList = _bowlingContext.Teams.ToList();
+        return teamList;
     }
 }
